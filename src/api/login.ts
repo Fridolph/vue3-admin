@@ -22,7 +22,7 @@ export const login = (username: string, password: string) => {
     method: 'post',
     data: {
       username,
-      password
-    }
+      password,
+    },
   })
 }
