@@ -1,0 +1,86 @@
+/* --------------- 基本、常用 --------------------- */
+.bg(@path, @repeat:no-repeat, @x:center, @y:center) {
+	background: url(@path) @repeat @x @y;
+}
+
+/* --------------- 盒模型内容　文字、样式等 --------------------- */
+.ellipsis() {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.mEllipsis(@n:2) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: @n;
+	overflow: hidden;
+}
+.clearfix() {
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+.scrollBar(@piece: rgba(0, 0, 0, 0.1), @thumb: rgba(0, 0, 0, 0.2), @width: 6px, @radius: 20px) {
+	&::-webkit-scrollbar-track-piece {
+		background: @piece;
+	}
+	&::-webkit-scrollbar {
+		width: @width;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: @thumb;
+		border-radius: @radius;
+	}
+}
+
+.scrollBarHover(@piece: rgba(0, 0, 0, 0.08), @thumb: rgba(0, 0, 0, 0.17), @width: 6px, @trackRadius: 4px, @thumbRadius: 8px) {
+	&:hover {
+		overflow-y: auto;
+	}
+	&::-webkit-scrollbar-track-piece {
+		background: @piece;
+	}
+	&::-webkit-scrollbar {
+		width: @width;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: @piece;
+		border-radius: @trackRadius;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: @thumb;
+		border-radius: @thumbRadius;
+	}
+}
+
+/* --------------- CSS3 下的效果及兼容处理 ---------------------- */
+.ts(@prop: all, @time: 0.3s, @func: ease-in-out, @delay: 0) {
+	transition: all time @func;
+}
+.bs() {
+	box-shadow: 2px 2px 6px rgba(50, 135, 225, 0.4);
+}
+.bgLinear(@startColor, @endColor) {
+	background-image: linear-gradient(top, @startColor, @endColor);
+}
+.btnHover() {
+	.ts();
+	background-color: rgba(0, 151, 255, 0.7);
+	&:hover {
+		background-color: rgba(0, 151, 255, 0.9);
+	}
+}
+
+// retina图片
+.retinaImage(@file1x, @file2x, @width1x, @height1x) {
+	background-image: `url(${@file1x})`;
+
+	@media only screen and (min-device-pixel-ratio: 2),
+		only screen and (min-resolution: 192dpi),
+		only screen and (min-resolution: 2dppx) {
+		background-image: `url(${@file2x})`;
+		background-size: @width1x @height1x;
+	}
+}

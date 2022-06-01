@@ -1,0 +1,316 @@
+// breadcrumb
+.n-breadcrumb {
+	margin-bottom: 15px;
+}
+
+// collapse
+.n-collapse {
+	.n-collapse-item {
+		margin-top: -2px;
+		.n-collapse-item__header {
+			padding-top: 0;
+		}
+	}
+}
+
+// date-range-picker
+.n-date-picker--range {
+	.n-input__separator {
+		--n-text-color: @borderColor;
+	}
+	// naive-ui 的日期范围选择器是两个 input,flex 1，下面的代码使其似乎左对齐
+	// datepicker timerange 虚假的时分秒，不是 datetimerange
+	.n-input .n-input-wrapper:first-child {
+		max-width: 112px;
+	}
+	.n-input.n-input--pair .n-input__input-el {
+		text-align: left;
+	}
+	// datepicker timerange 不显示时分秒
+	&.date {
+		.n-input .n-input-wrapper:first-child {
+			max-width: 62px;
+		}
+	}
+}
+
+// drawer
+.n-drawer .n-drawer-content.n-drawer-content--native-scrollbar .n-drawer-body-content-wrapper {
+	.scrollBar();
+}
+
+// empty
+.n-empty {
+	.n-empty__description {
+		text-align: center;
+	}
+}
+
+// form
+.n-form-item {
+	position: relative;
+	&:first-child {
+		margin-top: 12px;
+	}
+	&:not(:first-child) {
+		margin-top: 2px;
+	}
+	&.n-form-item--top-labelled {
+		grid-template-rows: auto;
+		padding-top: 4px;
+		.n-form-item-label {
+			position: absolute;
+			top: -8px;
+			height: auto;
+			color: @text9;
+			font-size: 12px;
+			margin-left: 10px;
+			background-color: #fff;
+			z-index: 2;
+			padding: 0;
+		}
+	}
+	.n-form-item-blank--error {
+		position: relative;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 14px;
+			right: 10px;
+			width: 12px;
+			height: 12px;
+			background-size: cover;
+			display: inline-block;
+			background-size: cover;
+			width: 14px;
+			height: 14px;
+			background-image: url(/img/icons/show/warn-red.svg);
+		}
+		// 发生错误时隐藏文字
+		.n-input-word-count {
+			color: #fff;
+		}
+	}
+	.n-form-item-feedback-wrapper .n-form-item-feedback.n-form-item-feedback--error {
+		text-align: left;
+	}
+	&.feedback-right {
+		.n-form-item-feedback-wrapper .n-form-item-feedback.n-form-item-feedback--error {
+			text-align: right;
+		}
+	}
+}
+
+// input
+.n-input-number {
+	width: 100%;
+}
+.n-input {
+	.n-input__placeholder {
+		font-size: 12px;
+	}
+	.n-input__suffix {
+		letter-spacing: -1px;
+		transform: translateX(4px);
+	}
+}
+
+// message
+// 处理行高导致的图标和文字高度问题
+.n-message .n-message__content {
+	line-height: 1;
+}
+
+// page
+.n-data-table__pagination {
+	--n-pagination-margin: 20px 0 10px;
+	.n-pagination {
+		.n-pagination-prefix {
+			color: @text6;
+		}
+		.n-base-selection {
+			.n-base-selection-label {
+				--n-padding-single: 0 22px 0 8px;
+				.n-base-selection-input {
+					--n-text-color: @text6;
+				}
+			}
+			.n-base-suffix {
+				right: 4px;
+			}
+			.n-base-clear {
+				--n-arrow-size: 18px;
+			}
+		}
+	}
+}
+
+// select
+.n-select-menu {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.n-base-select-menu {
+	.n-base-select-menu__action {
+		padding: 10px;
+	}
+}
+.n-base-selection {
+	&.n-base-selection--disabled .n-base-selection-label {
+		opacity: 0.3;
+		.n-base-selection-input {
+			color: var(--n-text-color);
+		}
+	}
+	&.n-base-selection--error-status .n-base-selection__state-border {
+		border: var(--n-border);
+	}
+}
+
+// space
+.n-space > div {
+	display: flex;
+	align-items: center;
+	padding: 0 !important;
+}
+
+// tab
+.n-tabs-nav--line-type {
+	.n-tabs-tab {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	// 弄个假的挡一下
+	.n-tabs-tab--active {
+		position: relative;
+		&::after {
+			position: absolute;
+			bottom: -1px;
+			left: 0;
+			right: 0;
+			content: '';
+			width: 100%;
+			height: 2px;
+			background-color: @theme;
+		}
+	}
+}
+
+// table
+.n-data-table {
+	&.n-data-table--bordered .n-data-table-wrapper {
+		border-left: none;
+		border-right: none;
+		border-top: none;
+	}
+
+	// sub line
+	.sub {
+		width: 13px;
+		height: 13px;
+		border: 1px solid @iconColor;
+		border-right: none;
+		border-top: none;
+	}
+	.n-data-table-expand-trigger {
+		position: relative;
+		margin-right: 32px;
+		&::after {
+			position: absolute;
+			top: 50%;
+			right: -22px;
+			display: inline-block;
+			content: '';
+			.sub();
+			transform: translateY(-12px);
+		}
+	}
+	.n-data-table-indent:first-child,
+	.n-data-table-expand-trigger:first-child,
+	.n-data-table-expand-placeholder:first-child {
+		display: none;
+	}
+	.n-data-table-expand-placeholder:not(:first-child) {
+		.sub();
+		transform: translateY(-4px);
+		margin-left: 35px;
+		&:nth-child(2) {
+			margin-left: 24px;
+		}
+	}
+
+	.n-checkbox {
+		&.n-checkbox--table-header .n-checkbox-box {
+			--n-border-checked: #fff;
+			background: transparent;
+		}
+		&.n-checkbox--indeterminate .n-checkbox-box {
+			--n-check-mark-color: #000;
+			background: #fff;
+		}
+		&.n-checkbox--checked.n-checkbox--table-header .n-checkbox-box {
+			background: var(--n-color-checked);
+			border-color: #fff;
+		}
+		&:hover .n-checkbox-box .n-checkbox-box__border {
+			border: var(--n-border);
+		}
+		.n-checkbox-box {
+			width: 12px;
+			height: 12px;
+		}
+	}
+	.n-data-table-thead {
+		.n-checkbox {
+			&.n-checkbox--table-header .n-checkbox-box {
+				--n-border: 1px solid #fff;
+			}
+		}
+	}
+
+	// 默认的过滤图标
+	.n-data-table-th--filterable {
+		.n-data-table-filter {
+			position: static;
+			display: inline-block;
+			width: 30px;
+			margin-left: 6px;
+			transform: translateY(3px);
+		}
+	}
+	.n-data-table-tr .n-data-table-sorter {
+		display: none;
+	}
+	.n-data-table-td.n-data-table-td--hover {
+		background-color: #fff;
+	}
+
+	// 表格为空时莫名的高度问题导致的 empty 状态无法显示
+	.n-data-table-base-table {
+		.n-data-table-base-table-body.n-scrollbar:not(:last-child) {
+			height: auto;
+		}
+		.n-data-table-empty {
+			overflow: hidden;
+		}
+	}
+}
+
+// menu
+.n-layout-sider .n-menu {
+	.n-menu-item,
+	.n-submenu {
+		.n-menu-item-content-header {
+			user-select: none;
+		}
+	}
+}
+// message
+.n-message {
+	position: relative;
+	min-width: 300px; // theme中写了无效
+	.n-message__close {
+		position: absolute;
+		right: 10px;
+	}
+}

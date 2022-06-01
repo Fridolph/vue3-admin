@@ -1,0 +1,50 @@
+@import url(./reset.less);
+
+body {
+	font-family: 'Helvetica Neue', Helvetica, 'PingFang-SC-Middle', 'Hiragino Sans GB',
+		'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+h4,
+p,
+pre {
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+	padding-inline-start: 0;
+	li {
+		list-style: none;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+.status-dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin-right: 4px;
+	&.green {
+		background-color: @successColor;
+	}
+	&.blue {
+		background-color: @infoColor;
+	}
+	&.red {
+		background-color: @errorColor;
+	}
+	&.orange {
+		background-color: @warningColor;
+	}
+	&.grey {
+		background-color: @iconColor;
+	}
+	&.white {
+		background-color: transparent;
+	}
+}

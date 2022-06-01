@@ -1,36 +1,39 @@
 import { RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomePage/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home-view',
-    component: HomeView
+    name: 'home-page',
+    component: HomeView,
   },
   {
     path: '/login',
-    name: 'login',
+    name: 'login-page',
     meta: {
-      title: '登录'
+      title: '登录',
     },
-    component: () => import(/* webpackChunkName: "Login" */ '../views/LoginView.vue')
+    component: () =>
+      import(/* webpackChunkName: "Login" */ '../views/LoginPage/index.vue'),
   },
   {
     path: '/vueuse',
-    name: 'vueuse',
+    name: 'vue-use',
     meta: {
-      title: 'VueUse'
+      title: 'VueUse',
     },
-    component: () => import(/* webpackChunkName: "Login" */ '../views/VueUse.vue')
+    component: () =>
+      import(/* webpackChunkName: "Login" */ '../views/VueusePage/index.vue'),
   },
   {
     path: '/about',
-    name: 'about',
+    name: 'about-page',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/AboutPage/index.vue'),
+  },
 ]
 
 export default routes
